@@ -118,7 +118,7 @@ $app->router->group([
 });
 //Configs
 $app->configure('users');
-$app->configure('Constants');
+$app->configure('constants');
 
 $app->routeMiddleware([
     'auth.basic' => BasicAuthMiddleware::class

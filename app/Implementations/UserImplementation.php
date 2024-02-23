@@ -4,6 +4,7 @@ namespace App\Implementations;
 
 use App\Interfaces\UserInterface;
 use App\Models\Users;
+use Illuminate\Http\Response;
 
 class UserImplementation implements UserInterface
 {
@@ -17,7 +18,7 @@ class UserImplementation implements UserInterface
         $usersLists = (new Users())->getAllUsers($data);
 
         if (!count($usersLists)) {
-            return response()->json(['error' => 'Users lists is empty'], 412, ['Content-Type' => 'application/json']);
+            return response()->json(['error' => 'Users lists is empty'], Response::HTTP_NOT_FOUND, ['Content-Type' => 'application/json']);
         }
 
         return ['user_details' => $usersLists];
@@ -32,9 +33,9 @@ class UserImplementation implements UserInterface
         $userData = (new Users())->getUser($data['id']);
 
         if (!count($userData)) {
-            return response()->json(['error' => 'User data is not found'], 412, ['Content-Type' => 'application/json']);
+            return response()->json(['error' => 'User data is not found'], Response::HTTP_NOT_FOUND, ['Content-Type' => 'application/json']);
         }
 
-        return ['user_data' => $userData];
+        return $userData;
     }
 }
