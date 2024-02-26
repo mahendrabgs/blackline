@@ -46,7 +46,7 @@ Value - 78f7c1eac6765f7c
 Add to - Header
 ````
 
-#APIs Collections
+# APIs Collections
 ````
 1. GET http://0.0.0.0:80/users -- List all the Users
 2. GET http://0.0.0.0:80/users/1 --- Get a User Data
