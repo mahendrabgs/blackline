@@ -34,7 +34,7 @@ php -S localhost:8080 -t public
 ## Run with docker setup
 ```
 docker build . -t blackline-app``
-docker run -d -p80:8080 blackline-app``
+docker run -p80:8080 blackline-app``
 API base path - http://0.0.0.0:80``
 ```
 
@@ -44,4 +44,9 @@ Authorization Method - API KEY
 Key - api-auth-key
 Value - 78f7c1eac6765f7c
 Add to - Header
+````
 
+#APIs Collections
+````
+1. GET http://0.0.0.0:80/users -- List all the Users
+2. GET http://0.0.0.0:80/users/1 --- Get a User Data
