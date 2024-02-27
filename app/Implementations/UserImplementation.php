@@ -11,9 +11,9 @@ class UserImplementation implements UserInterface
 
     /**
      * @param array $data
-     * @return mixed
+     * @return array|\Illuminate\Http\JsonResponse
      */
-    public function getAllUsers(array $data): mixed
+    public function getAllUsers(array $data): array|\Illuminate\Http\JsonResponse
     {
         $usersLists = (new Users())->getAllUsers($data);
 

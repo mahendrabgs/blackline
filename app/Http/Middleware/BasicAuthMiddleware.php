@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Helpers\Common;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -28,19 +29,17 @@ class BasicAuthMiddleware
 
     public function validateAuthKey(Request $request): array
     {
-        $headers = $request->header();
+        $headers = Common::getFlatHeadersValues($request->header());
 
         if (!isset($headers['api-auth-key'])) {
             return ['error' => true, 'msg' => 'The api-auth-key is missed in the header'];
         }
 
-        $apiAuthKey = $headers['api-auth-key'][0] ?? '';
-
-        if (empty($apiAuthKey)) {
+        if (empty($headers['api-auth-key'])) {
             return ['error' => true, 'msg' => 'The api-auth-key is empty'];
         }
 
-        if (($apiAuthKey != config('constants.API-AUTH-KEY'))) {
+        if (($headers['api-auth-key'] != config('constants.API-AUTH-KEY'))) {
             return ['error' => true, 'msg' => 'The api-auth-key is not valid'];
         }
         return ['error' => false];
