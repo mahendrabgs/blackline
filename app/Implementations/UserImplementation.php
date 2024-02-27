@@ -15,7 +15,7 @@ class UserImplementation implements UserInterface
      */
     public function getAllUsers(array $data): array|\Illuminate\Http\JsonResponse
     {
-        $usersLists = (new Users())->getAllUsers($data);
+        $usersLists = (new Users())->getAllUsers();
 
         if (!count($usersLists)) {
             return response()->json(['error' => 'Users lists is empty'], Response::HTTP_NOT_FOUND, ['Content-Type' => 'application/json']);
