@@ -15,6 +15,9 @@ class Users extends Model
      */
     protected mixed $usersLists = [];
 
+    //protected $table = "users";
+    //protected $primaryKey = "users_id";
+
     /**
      * Create a new controller instance.
      *
