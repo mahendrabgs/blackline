@@ -48,11 +48,6 @@ class Users extends Model
      */
     public function getAllUsers()
     {
-        if (!count($this->usersLists)) {
-            return response()->json(['error' => 'Users lists is empty'], 412, ['Content-Type' => 'application/json']);
-        }
-
         return $this->usersLists;
-
     }
 }

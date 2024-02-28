@@ -18,7 +18,7 @@ class UserImplementation implements UserInterface
         $usersLists = (new Users())->getAllUsers();
 
         if (!count($usersLists)) {
-            return response()->json(['error' => 'Users lists is empty'], Response::HTTP_NOT_FOUND, ['Content-Type' => 'application/json']);
+            return response()->json(['error' => 'Users lists is empty'], Response::HTTP_NO_CONTENT, ['Content-Type' => 'application/json']);
         }
 
         return ['user_details' => $usersLists];
@@ -33,7 +33,7 @@ class UserImplementation implements UserInterface
         $userData = (new Users())->getUser($data['id']);
 
         if (!count($userData)) {
-            return response()->json(['error' => 'User data is not found'], Response::HTTP_NOT_FOUND, ['Content-Type' => 'application/json']);
+            return response()->json(['error' => 'User data is not found'], Response::HTTP_NO_CONTENT, ['Content-Type' => 'application/json']);
         }
 
         return $userData;
